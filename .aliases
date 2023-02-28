@@ -1,0 +1,10 @@
+# git
+alias gs="git status"
+
+alias gcm="git commit -m"
+
+alias gco="git checkout"
+alias gcob="git checkout -b"
+
+alias gp="git push"
+alias gpfwl="git push --force-with-lease"
