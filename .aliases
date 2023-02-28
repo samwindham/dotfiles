@@ -6,5 +6,6 @@ alias gcm="git commit -m"
 alias gco="git checkout"
 alias gcob="git checkout -b"
 
-alias gp="git push"
+alias gp="git pull"
+alias gpush="git push"
 alias gpfwl="git push --force-with-lease"
