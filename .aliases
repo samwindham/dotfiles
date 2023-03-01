@@ -9,3 +9,6 @@ alias gcob="git checkout -b"
 alias gp="git pull"
 alias gpush="git push"
 alias gpfwl="git push --force-with-lease"
+
+# vanta
+alias dev="make dev-start-web"
