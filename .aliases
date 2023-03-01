@@ -12,3 +12,4 @@ alias gpfwl="git push --force-with-lease"
 
 # vanta
 alias dev="make dev-start-web"
+alias types="make generate-types"
