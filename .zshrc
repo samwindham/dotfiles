@@ -1,4 +1,7 @@
 export ZSH="${HOME}/.oh-my-zsh"
 
-# Theme.
+# theme
 ZSH_THEME="linuxonly"
+
+# aliases
+source ~/.aliases
