@@ -1,6 +1,5 @@
 #!/bin/bash
 
-
 create_symlinks() {
     # Get the directory in which this script lives.
     script_dir=$(dirname "$(readlink -f "$0")")
@@ -18,3 +17,5 @@ create_symlinks() {
 }
 
 create_symlinks
+cat .zshrc > $HOME/.zshrc
+source ~/.aliases
