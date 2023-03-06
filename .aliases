@@ -1,5 +1,6 @@
 # git
 alias gs="git status"
+alias gaa="git add ."
 alias gap="git add -p"
 
 alias gcm="git commit -m"
@@ -11,6 +12,7 @@ alias gp="git pull"
 alias gpush="git push"
 alias gpfwl="git push --force-with-lease"
 
-# vanta
+# work-specific
 alias dev="make dev-start-web"
+alias integration="make dev-start-integration"
 alias types="make generate-types"
