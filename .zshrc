@@ -1,2 +1,4 @@
-# testing to see if this works
-source ~/.aliases
+export ZSH="${HOME}/.oh-my-zsh"
+
+# Theme.
+ZSH_THEME="linuxonly"
