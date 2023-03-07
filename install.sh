@@ -17,5 +17,3 @@ create_symlinks() {
 }
 
 create_symlinks
-cat .zshrc > $HOME/.zshrc
-source ~/.aliases
