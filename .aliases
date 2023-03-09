@@ -13,6 +13,9 @@ alias gp="git pull"
 alias gpush="git push"
 alias gpfwl="git push --force-with-lease"
 
+alias unstage="git restore --staged"
+alias reset-last="git reset --soft HEAD^"
+
 # work-specific
 alias dev="make dev-start-web"
 alias integration="make dev-start-integration"
