@@ -1,3 +1,4 @@
+# not really needed since I'm not installing additional scripts
 #!/bin/bash
 
 create_symlinks() {
