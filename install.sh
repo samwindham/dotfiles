@@ -30,5 +30,4 @@ cp atuin-x86_64-unknown-linux-gnu/atuin "$HOME/bin/atuin"
 printf "%s" "$ATUIN_SESSION" > "$HOME/.atuin_session"
 printf "%s" "$ATUIN_KEY" > "$HOME/.atuin_key"
 
-unset ATUIN_SESSION
 unset ATUIN_KEY
