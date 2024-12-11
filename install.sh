@@ -21,8 +21,6 @@ create_symlinks
 
 
 makedir -p "$HOME/bin"
-
 wget https://github.com/atuinsh/atuin/releases/latest/download/atuin-x86_64-unknown-linux-gnu.tar.gz
-
-extract atuin-x86_64-unknown-linux-gnu.tar.gz
+tar xvf atuin-x86_64-unknown-linux-gnu.tar.gz
 cp atuin-x86_64-unknown-linux-gnu/atuin "$HOME/bin/atuin"
