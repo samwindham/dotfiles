@@ -1,4 +1,3 @@
-# not really needed since I'm not installing additional scripts
 #!/bin/bash
 
 create_symlinks() {
@@ -15,6 +14,8 @@ create_symlinks() {
         rm -rf ~/$name
         ln -s $script_dir/$name ~/$name
     done
+
+    ln -s "$script_dir/.config/atuin" "$HOME/.config/atuin"
 }
 
 create_symlinks
@@ -24,3 +25,10 @@ makedir -p "$HOME/bin"
 wget https://github.com/atuinsh/atuin/releases/latest/download/atuin-x86_64-unknown-linux-gnu.tar.gz
 tar xvf atuin-x86_64-unknown-linux-gnu.tar.gz
 cp atuin-x86_64-unknown-linux-gnu/atuin "$HOME/bin/atuin"
+
+
+echo "$ATUIN_SESSION" > "$HOME/.atuin_session"
+echo "$ATUIN_KEY" > "$HOME/.atuin_key"
+
+unset ATUIN_SESSION
+unset ATUIN_KEY
