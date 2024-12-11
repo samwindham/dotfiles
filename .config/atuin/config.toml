@@ -1,6 +1,5 @@
 style = "compact"
 inline_height = 25
-invert = true
 update_check = false
 sync_frequency = "5m"
 show_preview = true

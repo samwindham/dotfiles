@@ -26,9 +26,10 @@ wget https://github.com/atuinsh/atuin/releases/latest/download/atuin-x86_64-unkn
 tar xvf atuin-x86_64-unknown-linux-gnu.tar.gz
 cp atuin-x86_64-unknown-linux-gnu/atuin "$HOME/bin/atuin"
 
-wget https://github.com/akinomyoga/ble.sh/releases/download/v0.3.4/ble-0.3.4.tar.xz 
-tar xvf ble-0.3.4.tar.xz
-bash ble-0.3.4/ble.sh --install "$HOME/.local/share/"
+wget https://github.com/akinomyoga/ble.sh/releases/download/nightly/ble-nightly.tar.xz 
+tar xvf ble-nightly.tar.xz
+chmod +x ble-nightly/ble.sh
+bash ble-nightly/ble.sh --install "$HOME/.local/share/"
 
 bash "$HOME"/.local/share/blesh/ble.sh --update 
 
