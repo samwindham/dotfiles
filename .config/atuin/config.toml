@@ -1,4 +1,3 @@
-db_path = "~/.config/atuin/history.db"
 style = "compact"
 inline_height = 25
 invert = true
