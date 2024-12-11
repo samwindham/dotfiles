@@ -1,3 +1,7 @@
+#!/bin/bash
+export PATH="$PATH:$HOME/bin"
+
+
 extract() {
     local c e i
 
