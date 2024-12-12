@@ -7,3 +7,4 @@ enter_accept = false
 
 session_path = "$HOME/.atuin_session"
 key_path = "$HOME/.atuin_key"
+filter_mode = 'session'
