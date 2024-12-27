@@ -140,6 +140,9 @@ __bash_prompt() {
     unset -f __bash_prompt
 }
 
+__grab_git_template() {
+    git config commit.template .github/pull_request_template.md
+}
 
 __grab_git_template
 
