@@ -122,6 +122,7 @@ __bash_prompt() {
     local userpart='`export XIT=$? \
         && [ ! -z "${GITHUB_USER}" ] && echo -n "\[\033[0;32m\]@${GITHUB_USER} " || echo -n "\[\033[0;32m\]\u " \
         && [ "$XIT" -ne "0" ] && echo -n "\[\033[1;31m\]➜" || echo -n "\[\033[0m\]➜"`'
+    # shellcheck disable=SC2016
     local gitbranch='`\
         if [ "$(git config --get codespaces-theme.hide-status 2>/dev/null)" != 1 ]; then \
             export BRANCH=$(git symbolic-ref --short HEAD 2>/dev/null || git rev-parse --short HEAD 2>/dev/null); \
@@ -138,6 +139,10 @@ __bash_prompt() {
     PS1="${userpart} ${lightblue}\w ${gitbranch}${removecolor}\$ "
     unset -f __bash_prompt
 }
+
+
+__grab_git_template
+
 __bash_prompt
 export PROMPT_DIRTRIM=4
 export PATH="$PATH:$HOME/bin"
@@ -147,3 +152,6 @@ export ATUIN_HOST_USER=$GITHUB_USER
 
 source "$HOME/.local/share/blesh/ble.sh"
 eval "$(atuin init bash)"
+
+pip install git-machete 
+eval "$(git machete completion bash)"
