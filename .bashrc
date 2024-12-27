@@ -156,5 +156,6 @@ export ATUIN_HOST_USER=$GITHUB_USER
 source "$HOME/.local/share/blesh/ble.sh"
 eval "$(atuin init bash)"
 
-pip install git-machete 
+pip install git-machete
 eval "$(git machete completion bash)"
+git config machete.github.forceDescriptionFromCommitMessage true
