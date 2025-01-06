@@ -37,3 +37,6 @@ printf "%s" "$ATUIN_SESSION" > "$HOME/.atuin_session"
 printf "%s" "$ATUIN_KEY" > "$HOME/.atuin_key"
 
 unset ATUIN_KEY
+
+pip install git-machete
+git config machete.github.forceDescriptionFromCommitMessage true
