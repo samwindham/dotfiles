@@ -140,11 +140,11 @@ __bash_prompt() {
     unset -f __bash_prompt
 }
 
-__grab_git_template() {
-    git config commit.template .github/pull_request_template.md
-}
-
-__grab_git_template
+# __grab_git_template() {
+#     git config commit.template .github/pull_request_template.md
+# }
+# 
+# __grab_git_template
 
 __bash_prompt
 export PROMPT_DIRTRIM=4
