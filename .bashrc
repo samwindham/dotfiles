@@ -157,3 +157,6 @@ source "$HOME/.local/share/blesh/ble.sh"
 eval "$(atuin init bash)"
 
 eval "$(git machete completion bash)"
+
+source $HOME/.aliases
+
