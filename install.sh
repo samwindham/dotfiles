@@ -40,3 +40,5 @@ unset ATUIN_KEY
 
 pip install git-machete
 git config machete.github.forceDescriptionFromCommitMessage true
+
+source "$HOME/.bashrc"
