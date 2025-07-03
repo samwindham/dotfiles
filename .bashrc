@@ -146,6 +146,19 @@ __bash_prompt() {
 # 
 # __grab_git_template
 
+# Interactive git branch switcher using fzf
+gb() {
+  branch=$(git branch --all \
+    | grep -v 'HEAD' \
+    | sed 's/remotes\/origin\///' \
+    | sort -u \
+    | fzf --prompt="Switch to branch: ")
+
+  if [ -n "$branch" ]; then
+    git checkout "$(echo $branch | sed 's/.* //')"
+  fi
+}
+
 __bash_prompt
 export PROMPT_DIRTRIM=4
 export PATH="$PATH:$HOME/bin"
