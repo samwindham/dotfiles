@@ -42,3 +42,15 @@ pip install git-machete
 git config machete.github.forceDescriptionFromCommitMessage true
 
 source "$HOME/.bashrc"
+
+# Install fzf if it's not already installed
+if ! command -v fzf &> /dev/null; then
+  echo "Installing fzf..."
+  if [[ "$OSTYPE" == "darwin"* ]]; then
+    brew install fzf
+  elif [[ -x "$(command -v apt-get)" ]]; then
+    sudo apt-get update && sudo apt-get install -y fzf
+  else
+    echo "Please install fzf manually for your system"
+  fi
+fi
