@@ -54,3 +54,7 @@ if ! command -v fzf &> /dev/null; then
     echo "Please install fzf manually for your system"
   fi
 fi
+
+
+# install github extension
+gh extension install stacked-gh/gh-stack
