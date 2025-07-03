@@ -30,7 +30,5 @@ alias test="make unit-test"
 alias rebuild="git pull && yarn post-pull && make dev-replace web-client"
 
 # helper ailases
-git config --global alias.sync="!f() { \
-  branch=$(git symbolic-ref --short HEAD); \
-  git checkout main && git pull && git checkout "$branch" && git rebase main; \
-}; f"
+alias sync="branch=$(git symbolic-ref --short HEAD) && \
+  git checkout main && git pull && git checkout "$branch" && git rebase main;"
