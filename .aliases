@@ -1,36 +1,36 @@
 # git
-alias gs="git status"
-alias ga="git add"
-alias gaa="git add ."
-alias gap="git add -p"
+git config --global alias gs="git status"
+git config --global alias ga="git add"
+git config --global alias gaa="git add ."
+git config --global alias gap="git add -p"
 
-alias gcm="git commit -m"
+git config --global alias gcm="git commit -m"
 
-alias gco="git checkout"
-alias gcob="git checkout -b"
+git config --global alias gco="git checkout"
+git config --global alias gcob="git checkout -b"
 
-alias gp="git pull"
-alias gpush="git push"
-alias gpfwl="git push --force-with-lease"
+git config --global alias gp="git pull"
+git config --global alias gpush="git push"
+git config --global alias gpfwl="git push --force-with-lease"
 
-alias unstage="git restore --staged"
-alias reset-last="git reset --soft HEAD^"
+git config --global alias unstage="git restore --staged"
+git config --global alias reset-last="git reset --soft HEAD^"
 
-alias stash-unstaged="git stash push --keep-index -u"
+git config --global alias stash-unstaged="git stash push --keep-index -u"
 
 # work-specific
-alias dev="make dev-start-web"
-alias integration="make dev-start-integration"
-alias types="turbo generate-types"
-alias typecheck="turbo typecheck"
-alias typecheck-web="turbo typecheck -F web-client"
-alias make-types="make generate-types"
-alias story="make dev-storybook"
-alias test="make unit-test"
-alias rebuild="git pull && yarn post-pull && make dev-replace web-client"
+git config --global alias dev="make dev-start-web"
+git config --global alias integration="make dev-start-integration"
+git config --global alias types="turbo generate-types"
+git config --global alias typecheck="turbo typecheck"
+git config --global alias typecheck-web="turbo typecheck -F web-client"
+git config --global alias make-types="make generate-types"
+git config --global alias story="make dev-storybook"
+git config --global alias test="make unit-test"
+git config --global alias rebuild="git pull && yarn post-pull && make dev-replace web-client"
 
 # helper ailases
-alias sync="!f() { \
+git config --global alias sync="!f() { \
   branch=$(git symbolic-ref --short HEAD); \
   git checkout main && git pull && git checkout "$branch" && git rebase main; \
 }; f"
