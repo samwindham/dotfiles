@@ -148,14 +148,10 @@ __bash_prompt() {
 
 # Interactive git branch switcher using fzf
 gb() {
-  branch=$(git branch --all \
-    | grep -v 'HEAD' \
-    | sed 's/remotes\/origin\///' \
-    | sort -u \
-    | fzf --prompt="Switch to branch: ")
-
+  branch=$(git for-each-ref --sort=-committerdate refs/heads/ --format='%(refname:short)' \
+    | fzf --prompt="Recent local branches: ")
   if [ -n "$branch" ]; then
-    git checkout "$(echo $branch | sed 's/.* //')"
+    git checkout "$branch"
   fi
 }
 
