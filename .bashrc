@@ -160,3 +160,4 @@ eval "$(git machete completion bash)"
 
 source $HOME/.aliases
 
+echo ".bashrc was loaded ✅"
