@@ -56,5 +56,6 @@ if ! command -v fzf &> /dev/null; then
 fi
 
 # Install jj
-sudo apt-get install build-essential
-cargo install --locked --bin jj jj-cli
+curl -LO https://github.com/martinvonz/jj/releases/latest/download/jj-linux.tar.gz
+tar -xzf jj-linux.tar.gz
+sudo mv jj $HOME/bin/
