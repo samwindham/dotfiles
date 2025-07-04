@@ -55,5 +55,6 @@ if ! command -v fzf &> /dev/null; then
   fi
 fi
 
-# Installs the latest release
-brew install jj
+# Install jj
+sudo apt-get install build-essential
+cargo install --locked --bin jj jj-cli
