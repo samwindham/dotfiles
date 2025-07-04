@@ -55,41 +55,5 @@ if ! command -v fzf &> /dev/null; then
   fi
 fi
 
-# install Github CLI
-install_gh_cli() {
-  echo "🔧 Installing GitHub CLI..."
-
-  if command -v gh &>/dev/null; then
-    echo "✅ gh already installed"
-    return
-  fi
-
-  if [[ "$OSTYPE" == "darwin"* ]]; then
-    # macOS
-    if command -v brew &>/dev/null; then
-      brew install gh
-    else
-      echo "❌ Homebrew not found. Please install it first."
-    fi
-
-  elif [[ -f "/etc/debian_version" ]]; then
-    # Debian/Ubuntu
-    type -p curl >/dev/null || sudo apt install curl -y
-    curl -fsSL https://cli.github.com/packages/githubcli-archive-keyring.gpg | \
-      sudo dd of=/usr/share/keyrings/githubcli-archive-keyring.gpg
-    sudo chmod go+r /usr/share/keyrings/githubcli-archive-keyring.gpg
-    echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/githubcli-archive-keyring.gpg] \
-      https://cli.github.com/packages stable main" | \
-      sudo tee /etc/apt/sources.list.d/github-cli.list > /dev/null
-    sudo apt update
-    sudo apt install gh -y
-
-  else
-    echo "⚠️ Unsupported OS. Please install gh manually: https://cli.github.com/manual/installation"
-  fi
-}
-
-install_gh_cli
-
-# install github extension
-gh extension install stacked-gh/gh-stack
+# Installs the latest release
+brew install jj
