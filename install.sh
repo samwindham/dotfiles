@@ -56,6 +56,11 @@ if ! command -v fzf &> /dev/null; then
 fi
 
 # Install jj
-curl -LO https://github.com/martinvonz/jj/releases/latest/download/jj-linux.tar.gz
-tar -xzf jj-linux.tar.gz
+JJ_VERSION=$(curl -s https://api.github.com/repos/jj-vcs/jj/releases/latest | grep tag_name | cut -d '"' -f 4)
+
+# Download the prebuilt binary tar.gz
+curl -LO "https://github.com/jj-vcs/jj/releases/download/$JJ_VERSION/jj-linux-x86_64.tar.gz"
+
+# Extract and install
+tar -xzf jj-linux-x86_64.tar.gz
 sudo mv jj $HOME/bin/
