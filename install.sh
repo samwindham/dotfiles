@@ -59,8 +59,8 @@ fi
 JJ_VERSION=$(curl -s https://api.github.com/repos/jj-vcs/jj/releases/latest | grep tag_name | cut -d '"' -f 4)
 
 # Download the prebuilt binary tar.gz
-curl -LO "https://github.com/jj-vcs/jj/releases/download/$JJ_VERSION/jj-linux-x86_64.tar.gz"
+curl -LO "https://github.com/jj-vcs/jj/releases/download/$JJ_VERSION/$JJ_VERSION-x86_64-unknown-linux-musl.tar.gz"
 
 # Extract and install
-tar -xzf jj-linux-x86_64.tar.gz
+tar -xzf $JJ_VERSION-x86_64-unknown-linux-musl.tar.gz
 sudo mv jj $HOME/bin/
