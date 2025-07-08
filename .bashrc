@@ -155,6 +155,12 @@ gb() {
   fi
 }
 
+# Switch to main, pull changes, rebase branch on mains
+sync() {
+  branch=$(git symbolic-ref --short HEAD)
+  git checkout main && git pull && git checkout "$branch" && git rebase main
+}
+
 __bash_prompt
 export PROMPT_DIRTRIM=4
 export PATH="$PATH:$HOME/bin"
