@@ -1,0 +1,5 @@
+user.name = "samwindham"
+user.email = "sam.windham@vanta.com"
+
+# Optional: default editor
+ui.editor = "code -w"

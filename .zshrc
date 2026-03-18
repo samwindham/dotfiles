@@ -1,8 +1,10 @@
 export ZSH="${HOME}/.oh-my-zsh"
-
-# theme
 ZSH_THEME="linuxonly"
+plugins=(git-extras jj)
 
-# aliases
-source $ZSH/oh-my-zsh.sh
-source $HOME/.aliases
+source "$ZSH/oh-my-zsh.sh"
+[ -f "$HOME/.aliases" ] && source "$HOME/.aliases"
+
+if command -v jj &> /dev/null; then
+  source <(jj util completion zsh)
+fi

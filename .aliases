@@ -12,6 +12,11 @@ alias gcob="git checkout -b"
 alias gp="git pull"
 alias gpush="git push"
 alias gpfwl="git push --force-with-lease"
+alias push="git push --force --no-verify"
+
+alias create="git switch -c"
+alias switch="git switch"
+alias rebase='git rebase "${@:-main}"'
 
 alias unstage="git restore --staged"
 alias reset-last="git reset --soft HEAD^"

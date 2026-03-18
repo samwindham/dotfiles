@@ -140,22 +140,7 @@ __bash_prompt() {
     unset -f __bash_prompt
 }
 
-# __grab_git_template() {
-#     git config commit.template .github/pull_request_template.md
-# }
-# 
-# __grab_git_template
-
-# Interactive git branch switcher using fzf
-gb() {
-  branch=$(git for-each-ref --sort=-committerdate refs/heads/ --format='%(refname:short)' \
-    | fzf --prompt="Recent local branches: ")
-  if [ -n "$branch" ]; then
-    git checkout "$branch"
-  fi
-}
-
-# Switch to main, pull changes, rebase branch on mains
+# Switch to main, pull changes, rebase branch on main
 sync() {
   branch=$(git symbolic-ref --short HEAD)
   git checkout main && git pull && git checkout "$branch" && git rebase main
@@ -165,14 +150,6 @@ __bash_prompt
 export PROMPT_DIRTRIM=4
 export PATH="$PATH:$HOME/bin"
 
-export ATUIN_HOST_NAME="codespace/$GITHUB_REPOSITORY"
-export ATUIN_HOST_USER=$GITHUB_USER
-
-source "$HOME/.local/share/blesh/ble.sh"
-eval "$(atuin init bash)"
-
-eval "$(git machete completion bash)"
-
-source $HOME/.aliases
+[ -f ~/.aliases ] && . ~/.aliases
 
 echo ".bashrc was loaded ✅"
