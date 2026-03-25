@@ -35,3 +35,47 @@ if ! command -v jj &> /dev/null; then
   rm -f /tmp/jj.tar.gz
   echo "✅ jj installed"
 fi
+
+# Install mergiraf if not already installed
+# https://codeberg.org/mergiraf/mergiraf/releases
+if ! command -v mergiraf &> /dev/null; then
+  echo "Installing mergiraf..."
+  MERGIRAF_VERSION="0.16.3"
+  mkdir -p "$HOME/bin"
+  kernel=$(uname -s)
+  machine=$(uname -m)
+  case "$machine" in
+    arm64) machine=aarch64 ;;
+  esac
+  asset=""
+  if [ "$kernel" = "Linux" ]; then
+    case "$machine" in
+      x86_64) asset="mergiraf_x86_64-unknown-linux-gnu.tar.gz" ;;
+      aarch64) asset="mergiraf_aarch64-unknown-linux-gnu.tar.gz" ;;
+      *)
+        echo "Unsupported Linux architecture: $machine" >&2
+        exit 1
+        ;;
+    esac
+  elif [ "$kernel" = "Darwin" ]; then
+    case "$machine" in
+      x86_64) asset="mergiraf_x86_64-apple-darwin.tar.gz" ;;
+      aarch64) asset="mergiraf_aarch64-apple-darwin.tar.gz" ;;
+      *)
+        echo "Unsupported Darwin architecture: $machine" >&2
+        exit 1
+        ;;
+    esac
+  else
+    echo "Unsupported OS for mergiraf install: $kernel" >&2
+    exit 1
+  fi
+  tmpdir=$(mktemp -d)
+  url="https://codeberg.org/mergiraf/mergiraf/releases/download/v${MERGIRAF_VERSION}/${asset}"
+  curl -sL "$url" -o "$tmpdir/mergiraf.tar.gz"
+  tar xzf "$tmpdir/mergiraf.tar.gz" -C "$tmpdir"
+  mv "$tmpdir/mergiraf" "$HOME/bin/mergiraf"
+  chmod +x "$HOME/bin/mergiraf"
+  rm -rf "$tmpdir"
+  echo "✅ mergiraf installed"
+fi

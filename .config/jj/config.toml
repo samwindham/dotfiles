@@ -1,5 +1,7 @@
-user.name = "samwindham"
-user.email = "sam.windham@vanta.com"
+[user]
+name = "samwindham"
+email = "sam.windham@vanta.com"
 
-# Optional: default editor
-ui.editor = "code -w"
+[ui]
+editor = "cursor -w"
+merge-editor = "mergiraf"
