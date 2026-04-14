@@ -5,3 +5,27 @@ email = "sam.windham@vanta.com"
 [ui]
 editor = "cursor -w"
 merge-editor = "mergiraf"
+default-command = "log"
+
+[remotes.origin]
+auto-track-created-bookmarks = "sw/* | PORIM*"
+
+[aliases]
+l = ["log"]
+st = ["status"]
+a = ["abandon"]
+d = ["describe", "-m"]
+track = ["bookmark", "track"]
+r = ["rebase", "--onto"]
+rm = ["rebase", "--onto", "main@origin"]
+f = ["git", "fetch"]
+fetch = ["git", "fetch"]
+p = ["git", "push"]
+push = ["git", "push"]
+sync = [
+  "util", "exec", "--", "bash", "-c", """
+set -euo pipefail
+jj git fetch --remote origin
+jj rebase --onto main@origin
+""", ""
+]

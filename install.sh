@@ -1,13 +1,13 @@
 #!/bin/bash
 
-create_symlinks() {
-    script_dir=$(cd "$(dirname "$(readlink -f "$0")")" && pwd)
+DOTFILES_DIR="$(cd "$(dirname "$(readlink -f "$0")")" && pwd)"
 
+create_symlinks() {
     for obsolete in .blerc .atuin_key .atuin_session; do
         [ -L "$HOME/$obsolete" ] && rm -f "$HOME/$obsolete"
     done
 
-    for file in "$script_dir"/.*; do
+    for file in "$DOTFILES_DIR"/.*; do
         [ -f "$file" ] || continue
         name=$(basename "$file")
         [ "$name" = ".gitignore" ] && continue
@@ -17,8 +17,8 @@ create_symlinks() {
     done
 
     mkdir -p "$HOME/.config/git" "$HOME/.config/jj"
-    ln -sf "$script_dir/.config/git/config" "$HOME/.config/git/config"
-    ln -sf "$script_dir/.config/jj/config.toml" "$HOME/.config/jj/config.toml"
+    ln -sf "$DOTFILES_DIR/.config/git/config" "$HOME/.config/git/config"
+    ln -sf "$DOTFILES_DIR/.config/jj/config.toml" "$HOME/.config/jj/config.toml"
 }
 
 create_symlinks
@@ -34,6 +34,38 @@ if ! command -v jj &> /dev/null; then
   chmod +x "$HOME/bin/jj"
   rm -f /tmp/jj.tar.gz
   echo "✅ jj installed"
+fi
+
+# Colocate jj with the dev workspace under /workspaces/ (Ona: usually a single
+# checkout). First directory with a .git wins. Override with DEV_WORKSPACE_ROOT.
+PATH="${HOME}/bin:${PATH}"
+resolve_dev_workspace() {
+  if [ -n "${DEV_WORKSPACE_ROOT:-}" ] && [ -d "${DEV_WORKSPACE_ROOT}/.git" ]; then
+    printf '%s' "$DEV_WORKSPACE_ROOT"
+    return
+  fi
+  if [ ! -d /workspaces ]; then
+    return
+  fi
+  local d
+  for d in /workspaces/*; do
+    [ -d "$d" ] || continue
+    [ -d "$d/.git" ] || continue
+    printf '%s' "$d"
+    return
+  done
+}
+
+DEV_WORKSPACE="$(resolve_dev_workspace)"
+if [ -n "$DEV_WORKSPACE" ]; then
+  if command -v jj >/dev/null 2>&1; then
+    if [ ! -d "$DEV_WORKSPACE/.jj" ]; then
+      echo "Running jj git init in $DEV_WORKSPACE..."
+      (cd "$DEV_WORKSPACE" && jj git init)
+    fi
+  else
+    echo "Skipping jj git init: jj not on PATH (ensure $HOME/bin is in PATH)" >&2
+  fi
 fi
 
 # Install mergiraf if not already installed
@@ -79,3 +111,6 @@ if ! command -v mergiraf &> /dev/null; then
   rm -rf "$tmpdir"
   echo "✅ mergiraf installed"
 fi
+
+mkdir -p "$HOME/.local/state"
+touch "$HOME/.local/state/dotfiles-install.stamp"
