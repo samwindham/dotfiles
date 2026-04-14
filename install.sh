@@ -37,13 +37,9 @@ if ! command -v jj &> /dev/null; then
 fi
 
 # Colocate jj with the dev workspace under /workspaces/ (Ona: usually a single
-# checkout). First directory with a .git wins. Override with DEV_WORKSPACE_ROOT.
+# checkout). First directory with a .git wins.
 PATH="${HOME}/bin:${PATH}"
 resolve_dev_workspace() {
-  if [ -n "${DEV_WORKSPACE_ROOT:-}" ] && [ -d "${DEV_WORKSPACE_ROOT}/.git" ]; then
-    printf '%s' "$DEV_WORKSPACE_ROOT"
-    return
-  fi
   if [ ! -d /workspaces ]; then
     return
   fi
